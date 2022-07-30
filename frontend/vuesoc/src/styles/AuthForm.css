@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%!important;
+}
+.auth-form input+input {
+    margin-top: 6px;
+}
+.auth-form > input {
+    border: none;
+    outline: none!important;
+    width: 220px;
+    height: 32px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+input[type=submit] {
+    width: 220px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}

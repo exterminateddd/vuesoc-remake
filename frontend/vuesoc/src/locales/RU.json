@@ -1,0 +1,12 @@
+{
+    "appName": "VUESOC",
+    "login": "Вход",
+    "register": "Регистрация",
+    "auth": "Аутентификация",
+    "username": "Имя",
+    "password": "Пароль",
+    "repeat": "Повторите",
+    "again": "Снова",
+    "logout": "Выход",
+    "home": "Главная"
+}

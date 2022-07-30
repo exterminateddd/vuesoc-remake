@@ -1,0 +1,12 @@
+{
+    "appName": "VUESOC",
+    "login": "Log in",
+    "register": "Register",
+    "auth": "Authentication",
+    "username": "Username",
+    "password": "Password",
+    "repeat": "Repeat",
+    "again": "Again",
+    "logout": "Log out",
+    "home": "Home"
+}

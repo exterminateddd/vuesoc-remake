@@ -1,0 +1,40 @@
+*[class^=sidebar] {
+    z-index: 99;
+    transition: 0.4s linear;
+    background: #2E1052;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+*[class^=sidebar] > *+* {
+    margin-top: 8px;
+}
+.sidebar__normal {
+    width: 50px;
+}
+.sidebar__expanded {
+    width: 180px;
+}
+.hero-section > img {
+    max-width: 50px;
+    max-height: 50px;
+    background-position: 0 0;
+}
+.top-section {
+    flex-direction: row;
+}
+.sidebar__normal > .top-section > #locale-select {
+    display: none;
+}
+@media screen and (max-width: 500px) {
+    *[class^=sidebar] {
+        width: 100%;
+        flex-direction: row;
+    }
+    .bottom-section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100px;
+    }
+}

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap');
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.logout-confirm-btn {
+    border: 1px solid rgba(0, 0, 0, 0.452);
+    width: 180px;
+    height: 60px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    cursor: pointer;
+}
