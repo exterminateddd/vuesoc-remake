@@ -1,0 +1,50 @@
+{
+    "register": {
+        "username": {
+            "type": "string",
+            "minlength": 3,
+            "maxlength": 16,
+            "required": true
+        },
+        "password": {
+            "type": "string",
+            "minlength": 8,
+            "maxlength": 32,
+            "required": true
+        },
+        "email": {
+            "type": "string",
+            "regex": "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
+            "required": true
+        }
+    },
+    "login_by_username": {
+        "username": {
+            "type": "string",
+            "required": true
+        },
+        "password": {
+            "type": "string",
+            "required": true
+        },
+        "email": {
+            "type": "string",
+            "required": false
+        }
+    },
+    "login_by_email": {
+        "username": {
+            "type": "string",
+            "required": true
+        },
+        "password": {
+            "type": "string",
+            "required": false
+        },
+        "email": {
+            "type": "string",
+            "regex": "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
+            "required": true
+        }
+    }
+}
