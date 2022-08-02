@@ -16,6 +16,13 @@
                     <label for="register" class="action-label">{{l('register')}}</label>
                 </div>
 
+                <div :class="{
+                        'spinner-section': true,
+                        'hide': !isLoading
+                    }">
+                    <spinner :keepSpinning="isLoading"></spinner>
+                </div>
+
                 <login-form v-if="authAction==='login'" :loginAttemptHandler="attemptLogin">
                 </login-form>
 
@@ -35,33 +42,39 @@
 import RegistrationForm from '@/components/RegistrationForm.vue';
 import LoginForm from '@/components/LoginForm.vue';
 import DeviceInfo from '@/components/DeviceInfo.vue';
+import Spinner from '@/components/Spinner.vue';
 
 export default {
     name: 'AuthenticationView',
     data() {
         return {
-            authAction: 'login'
+            authAction: 'login',
+            isLoading: false
         }
     },
     methods: {
         attemptLogin(loginData) {
+            this.isLoading = true;
+
             let loginPayload = loginData;
             loginPayload.successCallback = this.onLoginSuccess;
             loginPayload.errorCallback = this.onLoginError;
             this.$store.dispatch('auth/loginByUsername', loginPayload);
         },
         onLoginSuccess() {
-            console.log("SUCCESS!!!")
+            this.isLoading = false;
+            console.log("SUCCESS!!!");
         },
-        onLoginError(msg) {
-            console.log("ERROR!!!", msg)
+        onLoginError(error) {
+            console.log("ERROR!!!", this.l(error));
         }
     },
     inject: ['l'],
     components: {
         RegistrationForm,
         LoginForm,
-        DeviceInfo
+        DeviceInfo,
+        Spinner
     }
 }
 </script>

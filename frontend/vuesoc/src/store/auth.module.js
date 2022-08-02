@@ -1,4 +1,5 @@
 import AuthSvc from "../services/auth.service.js";
+import User from "../models/User.js";
 
 let storedUser = localStorage.getItem('currentUser');
 let storedLocation = localStorage.getItem('location');
@@ -19,10 +20,11 @@ export const auth = {
     state: () => (initialState),
     namespaced: true,
     actions: {
-        loginByUsername({commit}, {username, password, successCallback, errorCallback}) {
+        loginByUsername({commit, dispatch}, {username, password, successCallback, errorCallback}) {
             AuthSvcInstance.loginByUsername(username, password)
                 .then((response) => {
                     if (response.data.success) {
+                        dispatch('updateUserData');
                         commit('loginSuccess', {'username': username, 'token': response.data.data.access_token});
                         successCallback();
                     } else {
@@ -39,11 +41,11 @@ export const auth = {
         updateUserData({commit}) {
             AuthSvcInstance.getCurrentUser()
                 .then((response) => {
-                    console.log(response);
-                    commit('userUpdate', response.data.data);
+                    const user = new User(response.data.data);
+                    commit('userUpdate', user);
                 })
                 .catch((error) => {
-                    console.log(400 <= error.response.status < 500)
+                    console.log(400 <= error.response.status < 500);
                 })
         },
         logout({commit}, {successCallback}) {
@@ -57,7 +59,6 @@ export const auth = {
     },
     mutations: {
         loginSuccess(state, payload) {
-            this.commit('auth/userUpdate', {'username': payload.username});
             this.commit('auth/setAuthToken', payload.token);
             this.state.loggedIn = true;
         },
